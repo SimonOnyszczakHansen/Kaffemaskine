@@ -6,13 +6,32 @@ using System.Threading.Tasks;
 
 namespace Kaffemaskine
 {
-    internal class Machine
+    public abstract class Machine
     {
-        bool isTurnedOn;
+        protected bool isTurnedOn;
 
         public Machine()
         {
             isTurnedOn = false;
         }
+        public virtual string TurnOn()
+        {
+            if (isTurnedOn)
+            {
+                return "Kaffemaskinen er allerede tændt";
+            }
+            isTurnedOn = true;
+            return "Kaffemaskinen er tændt";
+        }
+
+        public virtual string TurnOff()
+        {
+            if (!isTurnedOn)
+            {
+                return "Kaffemaskinen er allerede slukket";
+            }
+            isTurnedOn = false;
+            return "Kaffemaskinen er slukket";
+        }        
     }
 }
